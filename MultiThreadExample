@@ -1,0 +1,45 @@
+class AlphabetThread extends Thread {
+
+    public void run() {
+
+        for(char ch = 'A'; ch <= 'E'; ch++) {
+
+            System.out.println("Alphabet Thread: " + ch);
+
+            try {
+                Thread.sleep(500);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+class NumberThread extends Thread {
+
+    public void run() {
+
+        for(int i = 1; i <= 5; i++) {
+
+            System.out.println("Number Thread: " + i);
+
+            try {
+                Thread.sleep(500);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+public class MultiThreadExample {
+
+    public static void main(String[] args) {
+
+        AlphabetThread t1 = new AlphabetThread();
+        NumberThread t2 = new NumberThread();
+
+        t1.start();
+        t2.start();
+    }
+}
