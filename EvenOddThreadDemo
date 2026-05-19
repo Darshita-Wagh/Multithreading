@@ -1,0 +1,61 @@
+/*
+Question:
+Write a Java multithreading program where:
+
+1. One thread prints even numbers from 1 to 10.
+2. Another thread prints odd numbers from 1 to 10.
+3. Both threads should run simultaneously.
+4. Use Thread class and sleep() method.
+*/
+
+class EvenThread extends Thread {
+
+    public void run() {
+
+        for(int i = 1; i <= 10; i++) {
+
+            if(i % 2 == 0) {
+
+                System.out.println("Even Thread: " + i);
+
+                try {
+                    Thread.sleep(500);
+                } catch(Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }
+}
+
+class OddThread extends Thread {
+
+    public void run() {
+
+        for(int i = 1; i <= 10; i++) {
+
+            if(i % 2 != 0) {
+
+                System.out.println("Odd Thread: " + i);
+
+                try {
+                    Thread.sleep(500);
+                } catch(Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }
+}
+
+public class EvenOddThreadDemo {
+
+    public static void main(String[] args) {
+
+        EvenThread t1 = new EvenThread();
+        OddThread t2 = new OddThread();
+
+        t1.start();
+        t2.start();
+    }
+}
